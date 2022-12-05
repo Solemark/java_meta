@@ -1,0 +1,4 @@
+fName:lName:address:pNumber
+Mason:Larcombe:CQU Rockhampton:s0257989
+testNameA:testNameB:testAddressA:testPhoneNumberA
+firstName:lastName:memberAddress:phoneNumber

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/layout.xhtml">
+        <ui:define name="title">eBusiness</ui:define>
+        <ui:define name="header">eBusiness: Product, Customer, and Order Management</ui:define>
+        
+        <ui:define name="content">
+            <div>
+            <h1>Brand New and Used Cars</h1>
+            <div>
+            <h:link value="Create a new car" outcome="/NewCar/createNewCar"/>  | 
+            <h:link value="The list of new cars" outcome="/NewCar/listNewCars"/>  | 
+            <h:link value="Search for a new car" outcome="/NewCar/search"/>
+            </div>
+            <div>
+            <h:link value="Create a used car" outcome="/UsedCar/createUsedCar"/>  | 
+            <h:link value="The list of used cars" outcome="/UsedCar/listUsedCars"/>  | 
+            <h:link value="Search for a used car" outcome="/UsedCar/search"/>
+            </div>
+            <h1>Customers</h1>
+            <div>
+            <h:link value="Create a new customer" outcome="/Customer/createCustomer"/>  | 
+            <h:link value="List of Customers" outcome="/Customer/customerList"/>  | 
+            <h:link value="Search for a Customer" outcome="/Customer/search"/>
+            </div>
+        </div>
+        <div>
+            <h1>Orders of Cars</h1>
+            <h:link value="Create a new Order" outcome="/CustomerOrder/createOrder"/> |
+            <h:link value="List of Orders" outcome="/CustomerOrder/orderList"/> |
+            <h:link value="Search for an Order" outcome="/CustomerOrder/search"/>
+        </div>
+        </ui:define>
+        
+        <ui:define name="footer"></ui:define>
+        
+    </ui:composition>
+</html>
+

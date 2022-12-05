@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/layout.xhtml">
+        <ui:define name="title">Create a brand new car</ui:define>
+        <ui:define name="header">Create a brand new car</ui:define>
+        
+        <ui:define name="content">
+            <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Reference Number: "/>
+                <h:inputText value="#{newCarController.car.referenceNumber}"/>
+                
+                <h:outputLabel value="Make: "/>
+                <h:inputText value="#{newCarController.car.make}"/>
+                
+                <h:outputLabel value="Model: "/>
+                <h:inputText value="#{newCarController.car.model}"/>
+                
+                <h:outputLabel value="Drive Type: "/>
+                <h:inputText value="#{newCarController.car.driveType}"/>
+                
+                <h:outputLabel value="Colour: "/>
+                <h:inputText value="#{newCarController.car.colour}"/>
+                
+                <h:outputLabel value="Transmission: "/>
+                <h:inputText value="#{newCarController.car.transmission}"/>
+                
+                <h:outputLabel value="Engine: "/>
+                <h:inputText value="#{newCarController.car.engine}"/>
+                
+                <h:outputLabel value="Fuel Type: "/>
+                <h:inputText value="#{newCarController.car.fuelType}"/>
+                
+                <h:outputLabel value="Doors: "/>
+                <h:inputText value="#{newCarController.car.doors}"/>
+                
+                <h:outputLabel value="Seats: "/>
+                <h:inputText value="#{newCarController.car.seats}"/>
+                
+                <h:outputLabel value="Price: "/>
+                <h:inputText value="#{newCarController.car.price}"/>
+                
+                <h:outputLabel value="Warranty Years: "/>
+                <h:inputText value="#{newCarController.car.warrantyYears}"/>
+                
+                <h:outputLabel value="Extended Warranty Years: "/>
+                <h:inputText value="#{newCarController.car.extendedWarrantyYears}"/>
+                
+                <h:outputLabel value="Roadside Assistance: "/>
+                <h:inputText value="#{newCarController.car.roadsideAssistance}"/>
+                
+                <h:outputLabel value="Quantity: "/>
+                <h:inputText value="#{newCarController.car.quantity}"/>
+            </h:panelGrid>
+            
+            <h:commandButton value="Save" action="#{newCarController.createCar}"/>
+        </h:form>
+        </ui:define>
+        
+        <ui:define name="footer">
+            <h:link value="The stock of brand new cars" outcome="/NewCar/listNewCars.xhtml"/>
+        </ui:define>
+    </ui:composition>
+</html>
+

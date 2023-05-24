@@ -16,7 +16,6 @@ public class Bmi {
         this.sID = sID;
         this.height = height;
         this.weight = weight;
-        this.rating = rating;
     }
 
     public void setStudentID(String sID) {
@@ -81,6 +80,6 @@ public class Bmi {
 
     @Override
     public String toString() {
-        return getClass().getName() + "\n" + sID + " " + height + " " + weight + " " + rating;
+        return format("%s\n%s %d %d %s", getClass().getName(), sID, height, weight, rating);
     }
 }

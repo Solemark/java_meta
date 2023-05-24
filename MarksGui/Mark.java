@@ -1,55 +1,38 @@
-public class Mark
-{
-    private String studentName;
-    private int studentMark;
-    static String studentGrade;
+public class Mark {
+    private String name;
+    private int mark;
 
-    public Mark()   //default constructor
-    {
+    public Mark(String name, int mark) {
+        this.name = name;
+        this.mark = mark;
     }
 
-    public Mark(String sName, int sMark)    //parametised constructor
-    {
-        this.studentName = sName;
-        this.studentMark = sMark;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setStudentName(String sName)    //student name set method (mutator)
-    {
-		studentName=sName;
-    }
-    public String getStudentName()  //student name get method (accessor)
-    {
-		return studentName;
-    }
-    public void setStudentMark(int sMark)   //student mark set method (mutator)
-    {
-		this.studentMark=sMark;
-    }
-    public int getStudentMark()     //student mark get method (accessor)
-    {
-		return this.studentMark;
+    public String getName() {
+        return name;
     }
 
-    public static String getGrade(int sMark)     //getGrade method
-    {
-        final int P=50;
-        final int C=65;
-        final int D=75;
-        final int HD=85;
+    public void setMark(int mark) {
+        this.mark = mark;
+    }
 
-        if (sMark<P)
-            studentGrade="F";
-        else if (sMark<C)
-	    	studentGrade="P";
-        else if (sMark<D)
-            studentGrade="C";
-        else if (sMark<HD)
-            studentGrade="D";
-		else
-            studentGrade="HD";
+    public int getMark() {
+        return this.mark;
+    }
 
-        return studentGrade;
+    public static String getGrade(int mark) {
+        if (mark < 50)
+            return "F";
+        else if (mark < 65)
+            return "P";
+        else if (mark < 75)
+            return "C";
+        else if (mark < 85)
+            return "D";
+        else
+            return "HD";
     }
 }
-

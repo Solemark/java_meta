@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Week2 {
     public static void main(String[] args) {
-        final int max_marks = 65;
+        final int maxMarks = 65;
         String name;
         int mark, total;
 
@@ -10,10 +10,10 @@ public class Week2 {
             System.out.print("Enter the name of the student: ");
             name = input.next();
 
-            System.out.print("Enter of mark of " + name + " out of " + max_marks + ": ");
+            System.out.printf("Enter of mark of %s out of %d: ", name, maxMarks);
             mark = input.nextInt();
         }
-        total = (mark * 100) / max_marks;
+        total = (mark * 100) / maxMarks;
         System.out.printf("%s recieved %d %% of total marks.\n", name, total);
     }
 }

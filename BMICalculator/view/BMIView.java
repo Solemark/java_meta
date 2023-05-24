@@ -1,4 +1,5 @@
 package bmi.view;
+
 import bmi.model.BmiQueries;
 import static bmi.model.BmiQueries.list;
 import java.sql.Connection;
@@ -8,18 +9,20 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import java.text.DecimalFormat;
+
 public class BMIView extends javax.swing.JFrame {
 
-    static public String sID,rating,dbOut="",sHeight,sWeight,sMinBMI,sMaxBMI;
-    static public double height,weight,tRating,minBMI,maxBMI;
-    DecimalFormat df=new DecimalFormat("#.00");
-    
+    static public String sID, rating, dbOut = "", sHeight, sWeight, sMinBMI, sMaxBMI;
+    static public double height, weight, tRating, minBMI, maxBMI;
+    DecimalFormat df = new DecimalFormat("#.00");
+
     public BMIView() {
         initComponents();
     }
-    
+
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
@@ -152,398 +155,449 @@ public class BMIView extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout
+                                                .createSequentialGroup()
+                                                .addGap(36, 36, 36)
+                                                .addGroup(layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGroup(layout.createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                .addGap(1, 1, 1)
+                                                                                .addComponent(jLabel2))
+                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                .addGroup(layout.createParallelGroup(
+                                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                        .addComponent(jLabel4)
+                                                                                        .addComponent(jLabel5)
+                                                                                        .addComponent(jLabel6)
+                                                                                        .addComponent(jLabel7)
+                                                                                        .addComponent(jLabel8)
+                                                                                        .addComponent(jLabel9))
+                                                                                .addPreferredGap(
+                                                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                .addGroup(layout.createParallelGroup(
+                                                                                        javax.swing.GroupLayout.Alignment.LEADING,
+                                                                                        false)
+                                                                                        .addComponent(jTextField1)
+                                                                                        .addComponent(jTextField2)
+                                                                                        .addComponent(jTextField6,
+                                                                                                javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                                        .addComponent(jTextField5)
+                                                                                        .addComponent(jTextField3)
+                                                                                        .addComponent(jTextField4,
+                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                60, Short.MAX_VALUE))
+                                                                                .addPreferredGap(
+                                                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                .addComponent(jTextField7,
+                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                        60,
+                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                .addPreferredGap(
+                                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(layout.createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(jLabel3)
+                                                                        .addComponent(jScrollPane1)))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGap(62, 62, 62)
+                                                                .addComponent(jLabel1)
+                                                                .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addGroup(layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout
+                                                                .createSequentialGroup()
+                                                                .addComponent(jButton1)
+                                                                .addPreferredGap(
+                                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jButton2)
+                                                                .addPreferredGap(
+                                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jButton3)
+                                                                .addPreferredGap(
+                                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jButton4))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(jButton5)
+                                                                .addPreferredGap(
+                                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jButton6)
+                                                                .addPreferredGap(
+                                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jButton7)
+                                                                .addPreferredGap(
+                                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jButton8)))))
+                                .addGap(14, 14, 14))
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addComponent(jLabel2))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel9))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField1)
-                                            .addComponent(jTextField2)
-                                            .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jTextField5)
-                                            .addComponent(jTextField3)
-                                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jScrollPane1)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(62, 62, 62)
-                                .addComponent(jLabel1)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton8)))))
-                .addGap(14, 14, 14))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                                        .addComponent(jLabel10)
+                                        .addComponent(jLabel11))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2, jButton3, jButton4, jButton5, jButton6, jButton7, jButton8});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] { jButton1, jButton2, jButton3,
+                jButton4, jButton5, jButton6, jButton7, jButton8 });
 
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7)
-                    .addComponent(jButton8))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel4)
+                                                        .addComponent(jTextField1,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel5)
+                                                        .addComponent(jTextField2,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel6)
+                                                        .addComponent(jTextField3,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel7)
+                                                        .addComponent(jTextField4,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel8)
+                                                        .addComponent(jTextField5,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel9)
+                                                        .addComponent(jTextField6,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jTextField7,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jScrollPane1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jButton4)
+                                        .addComponent(jButton1)
+                                        .addComponent(jButton2)
+                                        .addComponent(jButton3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jButton5)
+                                        .addComponent(jButton6)
+                                        .addComponent(jButton7)
+                                        .addComponent(jButton8))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }// GEN-LAST:event_jTextField4ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        //At Risk Students
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton4ActionPerformed
+        // At Risk Students
         clear();
         BmiQueries.getAtRisk();
         int i;
-        
+
         jTextArea1.setText("At Risk Students");
         tableHead();
-        for(i=0;i<BmiQueries.list.size();i++){
-            jTextArea1.append(BmiQueries.list.get(i)+"\n");
+        for (i = 0; i < BmiQueries.list.size(); i++) {
+            jTextArea1.append(BmiQueries.list.get(i) + "\n");
         }
         lineBreak();
-        jTextArea1.append("Total students at risk: "+i);
-    }//GEN-LAST:event_jButton4ActionPerformed
+        jTextArea1.append("Total students at risk: " + i);
+    }// GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        //Update
-        sID=jTextField1.getText();
-        sID=sID.toUpperCase();
-        sHeight=jTextField2.getText();
-        height=Double.parseDouble(sHeight);
-        if(height<=0){
-            JOptionPane.showMessageDialog(null,"Error! No Student height entered","ERROR",JOptionPane.ERROR_MESSAGE);
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton5ActionPerformed
+        // Update
+        sID = jTextField1.getText();
+        sID = sID.toUpperCase();
+        sHeight = jTextField2.getText();
+        height = Double.parseDouble(sHeight);
+        if (height <= 0) {
+            JOptionPane.showMessageDialog(null, "Error! No Student height entered", "ERROR", JOptionPane.ERROR_MESSAGE);
             jTextField2.requestFocus();
             return;
         }
-        sWeight=jTextField3.getText();
-        weight=Double.parseDouble(sWeight);
-        if(weight<=0){
-            JOptionPane.showMessageDialog(null,"Error! No Student weight entered","ERROR",JOptionPane.ERROR_MESSAGE);
+        sWeight = jTextField3.getText();
+        weight = Double.parseDouble(sWeight);
+        if (weight <= 0) {
+            JOptionPane.showMessageDialog(null, "Error! No Student weight entered", "ERROR", JOptionPane.ERROR_MESSAGE);
             jTextField3.requestFocus();
             return;
         }
-        rating=jTextField5.getText();
+        rating = jTextField5.getText();
         clear();
-        dbOut=sID+", "+height+", "+weight+", "+rating;
+        dbOut = sID + ", " + height + ", " + weight + ", " + rating;
         tableHead();
-        jTextArea1.append(dbOut+"\n");
+        jTextArea1.append(dbOut + "\n");
         lineBreak();
         jTextArea1.append("Update Successful");
-        
-        BmiQueries.updateStudent(sID,height,weight,rating);
-    }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        //Add New
-        sID=jTextField1.getText();
-        sID=sID.toUpperCase();
-        sHeight=jTextField2.getText();
-        height=Double.parseDouble(sHeight);
-        if(height<=0){
-            JOptionPane.showMessageDialog(null,"Error! No Student height entered","ERROR",JOptionPane.ERROR_MESSAGE);
+        BmiQueries.updateStudent(sID, height, weight, rating);
+    }// GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton6ActionPerformed
+        // Add New
+        sID = jTextField1.getText();
+        sID = sID.toUpperCase();
+        sHeight = jTextField2.getText();
+        height = Double.parseDouble(sHeight);
+        if (height <= 0) {
+            JOptionPane.showMessageDialog(null, "Error! No Student height entered", "ERROR", JOptionPane.ERROR_MESSAGE);
             jTextField2.requestFocus();
             return;
         }
-        sWeight=jTextField3.getText();
-        weight=Double.parseDouble(sWeight);
-        if(weight<=0){
-            JOptionPane.showMessageDialog(null,"Error! No Student weight entered","ERROR",JOptionPane.ERROR_MESSAGE);
+        sWeight = jTextField3.getText();
+        weight = Double.parseDouble(sWeight);
+        if (weight <= 0) {
+            JOptionPane.showMessageDialog(null, "Error! No Student weight entered", "ERROR", JOptionPane.ERROR_MESSAGE);
             jTextField3.requestFocus();
             return;
         }
-        height=height/100;
-        tRating=(height*height);
-        tRating=(weight/tRating);
-        rating=df.format(tRating);
+        height = height / 100;
+        tRating = (height * height);
+        tRating = (weight / tRating);
+        rating = df.format(tRating);
         jTextField4.setText(rating);
-        
+
         clear();
-        dbOut=sID+", "+height+", "+weight+", "+rating;
+        dbOut = sID + ", " + height + ", " + weight + ", " + rating;
         tableHead();
-        jTextArea1.append(dbOut+"\n");
+        jTextArea1.append(dbOut + "\n");
         lineBreak();
         jTextArea1.append("New student added");
-                
+
         bmiRating();
-        rating=jTextField5.getText();
-        BmiQueries.addNewStudent(sID,height,weight,rating);
-    }//GEN-LAST:event_jButton6ActionPerformed
+        rating = jTextField5.getText();
+        BmiQueries.addNewStudent(sID, height, weight, rating);
+    }// GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton8ActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }// GEN-LAST:event_jButton8ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton7ActionPerformed
         clear();
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }// GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //All Students Button
-        clear();        
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
+        // All Students Button
+        clear();
         tableHead();
-        try{
-            Connection con=DriverManager.getConnection(BmiQueries.getHost());
-            Statement stmt=con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-            ResultSet rs=stmt.executeQuery(BmiQueries.getAllStudents());
-            
+        try {
+            Connection con = DriverManager.getConnection(BmiQueries.getHost());
+            Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs = stmt.executeQuery(BmiQueries.getAllStudents());
+
             rs.beforeFirst();
-            while(rs.next()){
-                sID=rs.getString("STUDENTID");
-                height=rs.getDouble("HEIGHT");
-                weight=rs.getDouble("WEIGHT");
-                rating=rs.getString("RATING");
-                dbOut=sID+", "+height+", "+weight+", "+rating;
-        
+            while (rs.next()) {
+                sID = rs.getString("STUDENTID");
+                height = rs.getDouble("HEIGHT");
+                weight = rs.getDouble("WEIGHT");
+                rating = rs.getString("RATING");
+                dbOut = sID + ", " + height + ", " + weight + ", " + rating;
+
                 list.add(dbOut);
                 System.out.println(dbOut);
-                jTextArea1.append(dbOut+"\n");
+                jTextArea1.append(dbOut + "\n");
             }
             System.out.println("Done!");
             lineBreak();
-            jTextArea1.append("Total number of students: "+list.size());
+            jTextArea1.append("Total number of students: " + list.size());
             con.close();
             rs.close();
-        }
-        catch(SQLException err){
+        } catch (SQLException err) {
             System.out.println(err.getMessage());
-            JOptionPane.showMessageDialog(null,"Error!\n"+err.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error!\n" + err.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         } catch (Exception err) {
             System.out.println(err.getMessage());
-            JOptionPane.showMessageDialog(null,"Error, unable to connect to server","ERROR",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error, unable to connect to server", "ERROR",
+                    JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }// GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //Specific Student
-        try{
-            sID=jTextField1.getText();
-            sID=sID.toUpperCase();
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton2ActionPerformed
+        // Specific Student
+        try {
+            sID = jTextField1.getText();
+            sID = sID.toUpperCase();
             clear();
-            
-            Connection con=DriverManager.getConnection(BmiQueries.getHost());
-            Statement stmt=con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-            ResultSet rs=stmt.executeQuery(BmiQueries.getSpecificStudent(sID));
-            
-            if(sID.equals("")){
-            JOptionPane.showMessageDialog(null,"No Student ID entered","ERROR",JOptionPane.ERROR_MESSAGE);
-            jTextField1.requestFocus();
-            return;
+
+            Connection con = DriverManager.getConnection(BmiQueries.getHost());
+            Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs = stmt.executeQuery(BmiQueries.getSpecificStudent(sID));
+
+            if (sID.equals("")) {
+                JOptionPane.showMessageDialog(null, "No Student ID entered", "ERROR", JOptionPane.ERROR_MESSAGE);
+                jTextField1.requestFocus();
+                return;
             }
             rs.beforeFirst();
-            while(rs.next()){
-                sID=rs.getString("STUDENTID");
-                height=rs.getDouble("HEIGHT");
-                weight=rs.getDouble("WEIGHT");
-                rating=rs.getString("RATING");
-                dbOut=sID+" "+height+" "+weight+" "+rating;
-        
+            while (rs.next()) {
+                sID = rs.getString("STUDENTID");
+                height = rs.getDouble("HEIGHT");
+                weight = rs.getDouble("WEIGHT");
+                rating = rs.getString("RATING");
+                dbOut = sID + " " + height + " " + weight + " " + rating;
+
                 list.add(sID);
                 System.out.println(dbOut);
-                jTextArea1.append(dbOut+"\n");
+                jTextArea1.append(dbOut + "\n");
                 jTextField1.setText(sID);
-                jTextField2.setText(""+height);
-                jTextField3.setText(""+weight);
-                
-                height=height/100;
-                tRating=(height*height);
-                tRating=(weight/tRating);
-                rating=df.format(tRating);
+                jTextField2.setText("" + height);
+                jTextField3.setText("" + weight);
+
+                height = height / 100;
+                tRating = (height * height);
+                tRating = (weight / tRating);
+                rating = df.format(tRating);
                 jTextField4.setText(rating);
-                bmiRating();   
+                bmiRating();
             }
-            for(int i=0;i<=list.size();i++){
-                if(list.get(i).equals(sID)){
+            for (int i = 0; i <= list.size(); i++) {
+                if (list.get(i).equals(sID)) {
                     break;
-                }
-                else{
-                    JOptionPane.showMessageDialog(null,"Invalid Student ID entered","ERROR",JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid Student ID entered", "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
                 }
             }
             System.out.println("Done!");
             con.close();
             rs.close();
-        }
-        catch(SQLException err){
+        } catch (SQLException err) {
             System.out.println(err.getMessage());
-            JOptionPane.showMessageDialog(null,"Error!\n"+err.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error!\n" + err.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         } catch (Exception err) {
             System.out.println(err.getMessage());
-            JOptionPane.showMessageDialog(null,"Error!\n"+err.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error!\n" + err.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }// GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        //BMI in Range
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton3ActionPerformed
+        // BMI in Range
         jTextArea1.setText("");
-        try{
-            sMinBMI=jTextField6.getText();
-            minBMI=Double.parseDouble(sMinBMI);
-            sMaxBMI=jTextField7.getText();
-            maxBMI=Double.parseDouble(sMaxBMI);
-            Connection con=DriverManager.getConnection(BmiQueries.getHost());
-            Statement stmt=con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-            ResultSet rs=stmt.executeQuery(BmiQueries.getBMIRange(minBMI,maxBMI));
-            int i=0;
-            
+        try {
+            sMinBMI = jTextField6.getText();
+            minBMI = Double.parseDouble(sMinBMI);
+            sMaxBMI = jTextField7.getText();
+            maxBMI = Double.parseDouble(sMaxBMI);
+            Connection con = DriverManager.getConnection(BmiQueries.getHost());
+            Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs = stmt.executeQuery(BmiQueries.getBMIRange(minBMI, maxBMI));
+            int i = 0;
+
             jTextArea1.setText("Bmi in Range");
             tableHead();
             rs.beforeFirst();
-            while(rs.next()){
-                sID=rs.getString("STUDENTID");
-                height=rs.getDouble("HEIGHT");
-                weight=rs.getDouble("WEIGHT");
-                rating=rs.getString("RATING");
-                dbOut=sID+" "+height+" "+weight+" "+rating;
-        
+            while (rs.next()) {
+                sID = rs.getString("STUDENTID");
+                height = rs.getDouble("HEIGHT");
+                weight = rs.getDouble("WEIGHT");
+                rating = rs.getString("RATING");
+                dbOut = sID + " " + height + " " + weight + " " + rating;
+
                 System.out.println(dbOut);
-                jTextArea1.append(dbOut+"\n");
+                jTextArea1.append(dbOut + "\n");
                 i++;
             }
             System.out.println("Done!");
             lineBreak();
-            jTextArea1.append("Total students in range: "+i);
+            jTextArea1.append("Total students in range: " + i);
             con.close();
             rs.close();
-        }
-        catch(SQLException err){
+        } catch (SQLException err) {
             System.out.println(err.getMessage());
-            JOptionPane.showMessageDialog(null,"Error!\n"+err.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error!\n" + err.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         } catch (Exception err) {
             System.out.println(err.getMessage());
-            JOptionPane.showMessageDialog(null,"Error!\n"+err.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error!\n" + err.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
-    public static void main(String[] args){
+    }// GEN-LAST:event_jButton3ActionPerformed
+
+    public static void main(String[] args) {
     }
-    public void bmiRating(){
-        if(tRating<16.00){
+
+    public void bmiRating() {
+        if (tRating < 16.00) {
             jTextField5.setText("Bulimic");
             jTextField6.setText("16.00");
         }
-        if(tRating>16.00&tRating<16.99){
+        if (tRating > 16.00 & tRating < 16.99) {
             jTextField5.setText("Lean");
             jTextField6.setText("16.00");
             jTextField7.setText("16.99");
         }
-        if(tRating>17.00&tRating<18.49){
+        if (tRating > 17.00 & tRating < 18.49) {
             jTextField5.setText("Under");
             jTextField6.setText("17.00");
             jTextField7.setText("18.49");
         }
-        if(tRating>18.50&tRating<24.99){
+        if (tRating > 18.50 & tRating < 24.99) {
             jTextField5.setText("Normal");
             jTextField6.setText("18.50");
             jTextField7.setText("24.99");
         }
-        if(tRating>25.00&tRating<29.99){
+        if (tRating > 25.00 & tRating < 29.99) {
             jTextField5.setText("Over");
             jTextField6.setText("25.00");
             jTextField7.setText("29.99");
         }
-        if(tRating>30.00&tRating<34.99){
+        if (tRating > 30.00 & tRating < 34.99) {
             jTextField5.setText("Obese");
             jTextField6.setText("30.00");
             jTextField7.setText("34.99");
         }
-        if(tRating>34.99){
+        if (tRating > 34.99) {
             jTextField5.setText("Morbid");
             jTextField7.setText("34.99");
         }
     }
-    public void clear(){
+
+    public void clear() {
         jTextField1.setText("");
         jTextField2.setText("");
         jTextField3.setText("");
@@ -554,14 +608,16 @@ public class BMIView extends javax.swing.JFrame {
         jTextArea1.setText("");
         list.clear();
     }
-    public void tableHead(){
+
+    public void tableHead() {
         jTextArea1.setText("Display all Students\nStudent ID, Height, Weight, Rating\n");
         lineBreak();
     }
-    public void lineBreak(){
+
+    public void lineBreak() {
         jTextArea1.append("------------------------------\n");
     }
-   
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

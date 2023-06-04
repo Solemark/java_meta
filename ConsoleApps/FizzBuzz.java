@@ -1,4 +1,12 @@
 public class FizzBuzz {
+    /**
+     * plays FizzBuzz between 1 and max
+     * 
+     * @param fizz
+     * @param buzz
+     * @param max
+     * @return String
+     */
     public String fizzBuzz(int fizz, int buzz, int max) {
         String output = "";
         Boolean flag = false;

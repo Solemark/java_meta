@@ -1,4 +1,10 @@
 public class Circles {
+    /**
+     * get circumference of circle from radius
+     * 
+     * @param radius
+     * @return float
+     */
     public float getCircumference(float radius) {
         if (radius <= 0) {
             return 0;
@@ -7,6 +13,12 @@ public class Circles {
         }
     }
 
+    /**
+     * get area of circle from radius
+     * 
+     * @param radius
+     * @return float
+     */
     public float getArea(float radius) {
         if (radius <= 0) {
             return 0;

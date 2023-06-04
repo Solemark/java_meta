@@ -1,17 +1,24 @@
 public class InsertionSort {
-    public int[] sort(int[] arr, int c) {
-        if (c <= 1) {
-            return arr;
+    /**
+     * performs an insertion sort
+     * 
+     * @param input
+     * @param count
+     * @return int[]
+     */
+    public int[] sort(int[] input, int count) {
+        if (count <= 1) {
+            return input;
         } else {
-            sort(arr, c - 1);
-            int current = arr[c - 1];
-            int i = c - 2;
-            while (i >= 0 && arr[i] > current) {
-                arr[i + 1] = arr[i];
+            sort(input, count - 1);
+            int current = input[count - 1];
+            int i = count - 2;
+            while (i >= 0 && input[i] > current) {
+                input[i + 1] = input[i];
                 i--;
-                arr[i + 1] = current;
+                input[i + 1] = current;
             }
-            return arr;
+            return input;
         }
     }
 }

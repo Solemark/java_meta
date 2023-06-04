@@ -1,6 +1,12 @@
 import java.util.Random;
 
 public class GachaRoll {
+    /**
+     * simulates getting an SSR in a gacha game
+     * 
+     * @param game
+     * @return String
+     */
     public static String roll(String game) {
         int rolls = 0, currentRoll = 0, rate = 0, pity = 0;
         String rarity = "";

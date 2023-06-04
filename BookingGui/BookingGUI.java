@@ -17,29 +17,24 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class BookingGUI extends JFrame implements ActionListener {
-    String bookingID;
-    String bookingDate;
-    int numberOfWeeks = 0;
-    String propertyOwnerName;
-    String contactNumber;
-    String address;
-    int rooms;
-    int gardenArea;
-    boolean securityAlarmCheck = false;
     boolean poolMaintenance = false;
+    boolean securityAlarmCheck = false;
+    int cBooking = 0;
+    int bookingC;
+    int gardenArea;
+    int i = 0;
+    int numberOfWeeks = 0;
+    int rooms;
     int totalCost;
     final int luxuryCost = 50;
     final int MAX_BOOKING = 9;
-    int i = 0;
-    int cBooking = 0;
-    int bookingC;
-    String strNumWeeks;
-    String strRooms;
-    String strGardenArea;
-    String strSecurityAlarmCheck = "";
-    String strPoolMaintenance = "";
-    String entry = "";
+    String address;
     String bAS = "";
+    String bookingDate;
+    String bookingID;
+    String contactNumber;
+    String entry = "";
+    String propertyOwnerName;
     String searchID = "";
 
     Luxury[] bookingArray = new Luxury[MAX_BOOKING];
@@ -133,18 +128,19 @@ public class BookingGUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
-        if (command.compareTo("Clear") == 0)
+        if (command.compareTo("Clear") == 0) {
             clear();
-        else if (command.compareTo("Booking") == 0)
+        } else if (command.compareTo("Booking") == 0) {
             saveData();
-        else if (command.compareTo("Exit") == 0)
+        } else if (command.compareTo("Exit") == 0) {
             exit();
-        else if (command.compareTo("Search") == 0)
+        } else if (command.compareTo("Search") == 0) {
             search();
-        else if (command.compareTo("Edit") == 0)
+        } else if (command.compareTo("Edit") == 0) {
             edit();
-        else if (command.compareTo("Edit(c)") == 0)
+        } else if (command.compareTo("Edit(c)") == 0) {
             editConfirm();
+        }
     }
 
     public void readAndDisplayData() {
@@ -161,26 +157,20 @@ public class BookingGUI extends JFrame implements ActionListener {
                 StringTokenizer st = new StringTokenizer(entry, ",");
 
                 while (st.hasMoreTokens()) {
-                    bookingID = st.nextToken();
-                    bookingDate = st.nextToken();
-                    strNumWeeks = st.nextToken();
-                    propertyOwnerName = st.nextToken();
-                    contactNumber = st.nextToken();
-                    address = st.nextToken();
-                    strRooms = st.nextToken();
-                    strGardenArea = st.nextToken();
-                    strSecurityAlarmCheck = st.nextToken();
-                    strPoolMaintenance = st.nextToken();
-
                     try {
-                        numberOfWeeks = Integer.parseInt(strNumWeeks);
-                        rooms = Integer.parseInt(strRooms);
-                        gardenArea = Integer.parseInt(strGardenArea);
-                        securityAlarmCheck = Boolean.parseBoolean(strSecurityAlarmCheck);
-                        poolMaintenance = Boolean.parseBoolean(strPoolMaintenance);
+                        bookingID = st.nextToken();
+                        bookingDate = st.nextToken();
+                        numberOfWeeks = Integer.parseInt(st.nextToken());
+                        propertyOwnerName = st.nextToken();
+                        contactNumber = st.nextToken();
+                        address = st.nextToken();
+                        rooms = Integer.parseInt(st.nextToken());
+                        gardenArea = Integer.parseInt(st.nextToken());
+                        securityAlarmCheck = Boolean.parseBoolean(st.nextToken());
+                        poolMaintenance = Boolean.parseBoolean(st.nextToken());
                         saveBooking();
-                    } catch (NumberFormatException e) {
-                        System.out.println("File reading error (integer/boolean)");
+                    } catch (Exception e) {
+                        System.out.println(e);
                     }
                 }
             }

@@ -40,8 +40,10 @@ public class MarksGUI extends JFrame implements ActionListener {
 
     private final JPanel error = new JPanel();
 
+    /**
+     * Constructor for MarksGUI
+     */
     public MarksGUI() {
-
         inputPanel.setLayout(new GridLayout(1, 4));
         inputPanel.add(nameLabel);
         inputPanel.add(nameField);
@@ -87,6 +89,11 @@ public class MarksGUI extends JFrame implements ActionListener {
         }
     }
 
+    /**
+     * retrieve student details from the frontend and save them
+     * 
+     * @return void
+     */
     private void getStudentDetails() {
         if (currentStudent == markArray.length) {
             JOptionPane.showMessageDialog(error, "Maximum number of students has been reached",
@@ -119,15 +126,30 @@ public class MarksGUI extends JFrame implements ActionListener {
         currentStudent++;
     }
 
+    /**
+     * adds a heading to the TextBox
+     * 
+     * @return void
+     */
     private void displayHeading() {
         displayTextArea.setText(String.format("%-29s%-17s%9s\n", "Student Name", "Student Mark", "Grade"));
         appendLine();
     }
 
+    /**
+     * adds a linebreak to the TextBox
+     * 
+     * @return void
+     */
     private void appendLine() {
         displayTextArea.append("-------------------------------------------------------\n");
     }
 
+    /**
+     * display all student records
+     * 
+     * @return void
+     */
     private void displayAll() {
         if (currentStudent == 0) {
             JOptionPane.showMessageDialog(error, "No students entered", "Mark Management System",
@@ -145,6 +167,11 @@ public class MarksGUI extends JFrame implements ActionListener {
         displayTextArea.append(String.format("Average mark: " + "%.2f", avgMark));
     }
 
+    /**
+     * searches for the student and displays record
+     * 
+     * @return void
+     */
     private void search() {
         searchName = JOptionPane.showInputDialog(null, "Enter a student name to search");
         for (int i = 0; i <= currentStudent; i++) {
@@ -164,6 +191,11 @@ public class MarksGUI extends JFrame implements ActionListener {
                 JOptionPane.ERROR_MESSAGE);
     }
 
+    /**
+     * closes application
+     * 
+     * @return void
+     */
     private void exit() {
         System.exit(0);
     }

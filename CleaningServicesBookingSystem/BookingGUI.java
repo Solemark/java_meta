@@ -1,63 +1,74 @@
-/*
-COIT11134 - Assignment 1
-File 1 of 2
-Student ID: s0257989
-Student Name: Mason Larcombe
-*/
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
-public class BookingGUI extends JFrame implements ActionListener
-{
-    String bookingID;
-    String bookingDate;
-    int numWeeks=0;
-    String propertyOwnerName;
-    String contactNumber;
-    String address;
-    int rooms;
-    int gardenArea;
-    boolean securityAlarmCheck=false;
-    boolean poolMaintenance=false;
-    int totalCost;
-    final int luxuryCost=50;
+public class BookingGUI extends JFrame implements ActionListener {
+    ArrayList<Booking> bookingList = new ArrayList<Booking>();
+    boolean poolMaintenance = false;
+    boolean securityAlarmCheck = false;
+    int gardenArea = 0;
+    int numWeeks = 0;
+    int totalCost = 0;
+    int rooms = 0;
+    final int luxuryCost = 50;
+    String address = "";
+    String bookingDate = "";
+    String bookingID = "";
+    String contactNumber = "";
+    String propertyOwnerName = "";
 
-    JCheckBox securityCheckBox=new JCheckBox("Security system check $"+luxuryCost,false);           //checkboxes
-    JCheckBox poolMaintenanceBox=new JCheckBox("Pool cleaning/maintenance $"+luxuryCost,false);
+    // checkboxes
+    JCheckBox securityCheckBox = new JCheckBox("Security system check $" + luxuryCost, false);
+    JCheckBox poolMaintenanceBox = new JCheckBox("Pool cleaning/maintenance $" + luxuryCost, false);
 
-    JButton clearButton=new JButton("Clear");           //buttons
-    JButton bookingButton=new JButton("Booking");
-    JButton exitButton=new JButton("Exit");
+    // buttons
+    JButton clearButton = new JButton("Clear");
+    JButton saveButton = new JButton("Save");
+    JButton exitButton = new JButton("Exit");
 
-    JLabel titleLabel=new JLabel("NQ-RE Services Calculator");      //labels/text
-    JLabel bookingIDLabel=new JLabel("Booking ID");
-    JLabel nameLabel=new JLabel("Property Owner Name");
-    JLabel contactNumberLabel=new JLabel("Contact Number");
-    JLabel addressLabel=new JLabel("Address");
-    JLabel bookingDateLabel=new JLabel("Booking Date");
-    JLabel numWeeksLabel=new JLabel("# of weeks of service");
-    JLabel roomsLabel=new JLabel("# of rooms");
-    JLabel gardenAreaLabel=new JLabel("Area of Garden m²");
-    JLabel priceLabel=new JLabel("The final cost is: ");
+    // labels/text
+    JLabel titleLabel = new JLabel("NQ-RE Services Calculator");
+    JLabel bookingIDLabel = new JLabel("Booking ID");
+    JLabel nameLabel = new JLabel("Property Owner Name");
+    JLabel contactNumberLabel = new JLabel("Contact Number");
+    JLabel addressLabel = new JLabel("Address");
+    JLabel bookingDateLabel = new JLabel("Booking Date");
+    JLabel numWeeksLabel = new JLabel("# of weeks of service");
+    JLabel roomsLabel = new JLabel("# of rooms");
+    JLabel gardenAreaLabel = new JLabel("Area of Garden mï¿½");
+    JLabel priceLabel = new JLabel("The final cost is: ");
 
-    JTextField bookingIDField=new JTextField(5);        //fields for labels
-    JTextField nameField=new JTextField(20);
-    JTextField contactNumberField=new JTextField(11);
-    JTextField addressField=new JTextField(15);
-    JTextField bookingDateField=new JTextField(12);
-    JTextField numWeeksField=new JTextField(9);
-    JTextField roomsField=new JTextField(14);
-    JTextField gardenAreaField=new JTextField(10);
-    JTextField priceField=new JTextField(4);
+    // fields for labels
+    JTextField bookingIDField = new JTextField(5);
+    JTextField nameField = new JTextField(20);
+    JTextField contactNumberField = new JTextField(11);
+    JTextField addressField = new JTextField(15);
+    JTextField bookingDateField = new JTextField(12);
+    JTextField numWeeksField = new JTextField(9);
+    JTextField roomsField = new JTextField(14);
+    JTextField gardenAreaField = new JTextField(10);
+    JTextField priceField = new JTextField(4);
 
-    public BookingGUI()
-    {
-        super("NQ-RE Services calculator");                         //display title on window top
+    /**
+     * BookingGUI class constructor
+     */
+    public BookingGUI() {
+        // display title on window top
+        super("NQ-RE Services calculator");
         setLayout(new FlowLayout());
 
-        titleLabel.setFont(new Font("Ariel", Font.BOLD, 15));       //format title
-        add(titleLabel);                                            //display java elements
+        // format title
+        titleLabel.setFont(new Font("Ariel", Font.BOLD, 15));
+        // display java elements
+        add(titleLabel);
         add(bookingIDLabel);
         add(bookingIDField);
         add(nameLabel);
@@ -79,32 +90,43 @@ public class BookingGUI extends JFrame implements ActionListener
         add(securityCheckBox);
         add(poolMaintenanceBox);
         add(clearButton);
-        add(bookingButton);
+        add(saveButton);
         add(exitButton);
         add(priceLabel);
         add(priceField);
 
-        priceField.setText("$"+totalCost);          //will display starting price, $0
+        // will display starting price, $0
+        priceField.setText("$" + totalCost);
 
-        clearButton.addActionListener(this);        //allows button pushes to be detected
-        bookingButton.addActionListener(this);
+        // allows button pushes to be detected
+        clearButton.addActionListener(this);
+        saveButton.addActionListener(this);
         exitButton.addActionListener(this);
     }
+
+    /**
+     * handles all buttonclicks
+     * 
+     * @return void
+     */
     @Override
-    public void actionPerformed(ActionEvent e)  // handles all buttonclicks
-    {
-	String command = e.getActionCommand();
+    public void actionPerformed(ActionEvent e) {
+        String command = e.getActionCommand();
 
-        if(command.compareTo("Clear")==0)
+        if (command.compareTo("Clear") == 0)
             clear();
-        else if(command.compareTo("Booking")==0)
+        else if (command.compareTo("SaveData") == 0)
             saveData();
-        else if(command.compareTo("Exit")==0)
+        else if (command.compareTo("Exit") == 0)
             exit();
-    } // actionPerformed
+    }
 
-    public void clear()     //clears all fields and sets luxury services to false
-    {
+    /**
+     * clears all fields and sets luxury services to false
+     * 
+     * @return void
+     */
+    public void clear() {
         roomsField.setText("");
         gardenAreaField.setText("");
         addressField.setText("");
@@ -112,157 +134,176 @@ public class BookingGUI extends JFrame implements ActionListener
         bookingDateField.setText("");
         bookingIDField.setText("");
         nameField.setText("");
-        priceField.setText("$"+0);
+        priceField.setText("$" + 0);
 
-        securityAlarmCheck=false;
-        poolMaintenance=false;
+        securityAlarmCheck = false;
+        poolMaintenance = false;
     }
 
-    public void saveData()
-    {
-        if (bookingIDField.getText().compareTo("")==0) //error code for blank booking ID field
-        {
-            JOptionPane.showMessageDialog(null,"No booking ID","NQ-RE Services Calculator",JOptionPane.ERROR_MESSAGE);
+    /**
+     * validate and save data
+     * 
+     * @return void
+     */
+    public void saveData() {
+        // error code for blank booking ID field
+        if (bookingIDField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(null, "No booking ID", "NQ-RE Services Calculator",
+                    JOptionPane.ERROR_MESSAGE);
             bookingIDField.requestFocus();
             return;
         }
 
-        if (nameField.getText().compareTo("")==0) //error code for blank property owner name field
-        {
-            JOptionPane.showMessageDialog(null,"No property owner name entered","NQ-RE Services Calculator",JOptionPane.ERROR_MESSAGE);
+        // error code for blank property owner name field
+        if (nameField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(null, "No property owner name entered", "NQ-RE Services Calculator",
+                    JOptionPane.ERROR_MESSAGE);
             nameField.requestFocus();
             return;
         }
 
-        if (contactNumberField.getText().compareTo("")==0) //error code for blank contact number field
-        {
-            JOptionPane.showMessageDialog(null,"No contact number entered","NQ-RE Services Calculator",JOptionPane.ERROR_MESSAGE);
+        // error code for blank contact number field
+        if (contactNumberField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(null, "No contact number entered", "NQ-RE Services Calculator",
+                    JOptionPane.ERROR_MESSAGE);
             contactNumberField.requestFocus();
             return;
         }
 
-        if (addressField.getText().compareTo("")==0) //error code for blank address field
-        {
-            JOptionPane.showMessageDialog(null,"No address entered","NQ-RE Services Calculator",JOptionPane.ERROR_MESSAGE);
+        // error code for blank address field
+        if (addressField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(null, "No address entered", "NQ-RE Services Calculator",
+                    JOptionPane.ERROR_MESSAGE);
             addressField.requestFocus();
             return;
         }
 
-        if (bookingDateField.getText().compareTo("")==0) //error code for blank booking date field
-        {
-            JOptionPane.showMessageDialog(null,"No booking date entered","NQ-RE Services Calculator",JOptionPane.ERROR_MESSAGE);
+        // error code for blank booking date field
+        if (bookingDateField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(null, "No booking date entered", "NQ-RE Services Calculator",
+                    JOptionPane.ERROR_MESSAGE);
             bookingDateField.requestFocus();
             return;
         }
 
-        if (numWeeksField.getText().compareTo("")==0) //error code for blank rooms field
-        {
-            JOptionPane.showMessageDialog(null,"Number of weeks of service invalid","NQ-RE Services Calculator",JOptionPane.ERROR_MESSAGE);
+        // error code for blank rooms field
+        if (numWeeksField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(null, "Number of weeks of service invalid", "NQ-RE Services Calculator",
+                    JOptionPane.ERROR_MESSAGE);
             numWeeksField.requestFocus();
             return;
         }
 
-        if (roomsField.getText().compareTo("")==0) //error code for blank rooms field
-        {
-            JOptionPane.showMessageDialog(null,"Invalid room numbers entered","NQ-RE Services Calculator",JOptionPane.ERROR_MESSAGE);
+        // error code for blank rooms field
+        if (roomsField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(null, "Invalid room numbers entered", "NQ-RE Services Calculator",
+                    JOptionPane.ERROR_MESSAGE);
             roomsField.requestFocus();
             return;
         }
 
-        if (gardenAreaField.getText().compareTo("")==0) //error code for blank garden area
-        {
-            JOptionPane.showMessageDialog(null,"Invalid garden area entered","NQ-RE Services Calculator",JOptionPane.ERROR_MESSAGE);
+        // error code for blank garden area
+        if (gardenAreaField.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(null, "Invalid garden area entered", "NQ-RE Services Calculator",
+                    JOptionPane.ERROR_MESSAGE);
             gardenAreaField.requestFocus();
             return;
         }
 
-        bookingID=bookingIDField.getText();                         //saves booking ID
-        propertyOwnerName=nameField.getText();                      //saves property owner name
-        contactNumber=contactNumberField.getText();                 //saves contact number
-        address=addressField.getText();                             //saves address
-        bookingDate=bookingDateField.getText();                     //saves booking date
-        numWeeks=Integer.parseInt(numWeeksField.getText());         //saves number of weeks
-        rooms=Integer.parseInt(roomsField.getText());               //saves number of rooms
-        gardenArea=Integer.parseInt(gardenAreaField.getText());     //saves garden area
+        // saves data
+        bookingID = bookingIDField.getText();
+        propertyOwnerName = nameField.getText();
+        contactNumber = contactNumberField.getText();
+        address = addressField.getText();
+        bookingDate = bookingDateField.getText();
+        numWeeks = Integer.parseInt(numWeeksField.getText());
+        rooms = Integer.parseInt(roomsField.getText());
+        gardenArea = Integer.parseInt(gardenAreaField.getText());
 
-        if(securityCheckBox.isSelected())           //checks if luxury services are selected and saves appropriately
-        {
-            if(poolMaintenanceBox.isSelected())
-            {
-                securityAlarmCheck=true;
-                poolMaintenance=true;
-                luxury();
-            }
-            else
-            {
-                securityAlarmCheck=true;
-                luxury();
-            }
-        }
-        else if(poolMaintenanceBox.isSelected())
-        {
-            if(securityCheckBox.isSelected())
-            {
-                poolMaintenance=true;
-                securityAlarmCheck=true;
-                luxury();
-            }
-            else
-            {
-                poolMaintenance=true;
-                luxury();
-            }
-        }
-        else
-        {
-            bookingA();
-        }
+        poolMaintenance = poolMaintenanceBox.isSelected();
+        securityAlarmCheck = securityCheckBox.isSelected();
 
+        // checks if luxury services are selected and saves appropriately
+        if (!poolMaintenance && !securityAlarmCheck) {
+            bookingList.add(createNewBooking());
+        } else {
+            bookingList.add(createNewLuxury());
+        }
         calculation();
     }
 
-    public void calculation()                   //performs cost calculation
-    {
-        totalCost=0;                            //resets total cost
+    /**
+     * performs cost calculation
+     * 
+     * @return void
+     */
+    public void calculation() {
+        totalCost = 0;
+        totalCost += (rooms * 5);
+        totalCost += (gardenArea * 2);
 
-        totalCost+=(rooms*5);                   //calculates room cost
-        totalCost+=(gardenArea*2);              //calculates garden area cost
-
-        if(securityCheckBox.isSelected())       //checks if security system checkbox has been selected
-        {
-            totalCost+=luxuryCost;
+        if (securityCheckBox.isSelected()) {
+            totalCost += luxuryCost;
         }
-        if(poolMaintenanceBox.isSelected())     //checks if pool maintenance checkbox has been selected
-        {
-            totalCost+=luxuryCost;
+        if (poolMaintenanceBox.isSelected()) {
+            totalCost += luxuryCost;
         }
 
-        totalCost=(totalCost*numWeeks);         //calculates total cost of service
-        priceField.setText("$"+totalCost);      //outputs total cost of service
+        totalCost = (totalCost * numWeeks);
+        priceField.setText("$" + totalCost);
     }
 
-    public void bookingA()      //saves a normal booking
-    {
-        Booking b1=new Booking(bookingID,bookingDate,numWeeks,propertyOwnerName,contactNumber,address,rooms,gardenArea);
+    /**
+     * create new booking object
+     * 
+     * @return Booking
+     */
+    public Booking createNewBooking() {
+        return new Booking(
+                gardenArea,
+                numWeeks,
+                rooms,
+                address,
+                bookingDate,
+                bookingID,
+                contactNumber,
+                propertyOwnerName);
     }
 
-    public void luxury()    //saves a luxury
-    {
-        Booking l1=new Luxury(bookingID,bookingDate,numWeeks,propertyOwnerName,contactNumber,address,rooms,gardenArea,securityAlarmCheck,poolMaintenance);
+    /**
+     * create a new luxury object
+     * 
+     * @return Luxury
+     */
+    public Luxury createNewLuxury() {
+        return new Luxury(
+                gardenArea,
+                numWeeks,
+                rooms,
+                address,
+                bookingDate,
+                bookingID,
+                contactNumber,
+                propertyOwnerName,
+                poolMaintenance,
+                securityAlarmCheck);
     }
 
-    public void exit()  //closes the program
-    {
+    /**
+     * exit's the application without error
+     * 
+     * @return void
+     */
+    public void exit() {
         System.exit(0);
     }
 
-    public static void main(String[] args)
-    {
-        BookingGUI f=new BookingGUI();                      //Create class instance
-		final int width=250;                                //Window width variable
-		final int height=400;                               //Window height variable
-		f.setSize(width,height);                            //Define size of window
-		f.setVisible(true);                                 // Make the application visible
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   // allow the code to close the program
+    public static void main(String[] args) {
+        BookingGUI f = new BookingGUI(); // Create class instance
+        final int width = 250; // Window width variable
+        final int height = 400; // Window height variable
+        f.setSize(width, height); // Define size of window
+        f.setVisible(true); // Make the application visible
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow the code to close the program
     }
 }

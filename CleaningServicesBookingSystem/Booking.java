@@ -1,176 +1,279 @@
-/*
-COIT11134 - Assignment 1
-File 2 of 2
-Student ID: s0257989
-Student Name: Mason Larcombe
-*/
-public class Booking
-{
-    private String bookingID;
-    private String bookingDate;
-    private int numWeeks;
-    private String propertyOwnerName;
-    private String contactNumber;
-    private String address;
-    private int rooms;
-    private int roomsCost=0;
-    private int gardenArea;
-    private int gardenAreaCost=0;
+public class Booking {
+    private int gardenArea = 0;
+    private int gardenAreaCost = 0;
+    private int numWeeks = 0;
+    private int rooms = 0;
+    private int roomsCost = 0;
+    private String address = "";
+    private String bookingDate = "";
+    private String bookingID = "";
+    private String contactNumber = "";
+    private String propertyOwnerName = "";
 
-    public Booking(String bookingID, String bookingDate,int numWeeks, String propertyOwnerName, String contactNumber, String address, int rooms, int gardenArea)    //paramatised constructor for bookings
-    {
-        this.bookingID=bookingID;
-        this.bookingDate=bookingDate;
-        this.numWeeks=numWeeks;
-        this.propertyOwnerName=propertyOwnerName;
-        this.contactNumber=contactNumber;
-        this.address=address;
-        this.rooms=rooms;
-        this.gardenArea=gardenArea;
+    /**
+     * Booking class constructor
+     * 
+     * @param gardenArea
+     * @param numWeeks
+     * @param rooms
+     * @param address
+     * @param bookingDate
+     * @param bookingID
+     * @param contactNumber
+     * @param propertyOwnerName
+     */
+    public Booking(
+            int gardenArea,
+            int numWeeks,
+            int rooms,
+            String address,
+            String bookingDate,
+            String bookingID,
+            String contactNumber,
+            String propertyOwnerName) {
+        this.gardenArea = gardenArea;
+        this.numWeeks = numWeeks;
+        this.rooms = rooms;
+        this.address = address;
+        this.bookingDate = bookingDate;
+        this.bookingID = bookingID;
+        this.contactNumber = contactNumber;
+        this.propertyOwnerName = propertyOwnerName;
 
-        setRoomsCost(rooms);        //begins room cost calculation
-        setGardenAreaCost(gardenArea);      //begins garden area cost calculation
+        setGardenAreaCost(gardenArea);
+        setRoomsCost(rooms);
     }
 
-    public void setRoomsCost(int rooms)     //room cost calculation, mutator method
-    {
-        this.roomsCost=rooms*5;
+    /**
+     * @param gardenArea
+     * @return void
+     */
+    public void setGardenArea(int gardenArea) {
+        this.gardenArea = gardenArea;
+        setGardenAreaCost(gardenArea);
     }
 
-    public int getRoomsCost()               //room cost accessor method
-    {
-        return this.roomsCost;
-    }
-
-    public void setGardenAreaCost(int gardenArea)       //garden area cost calculation, mutator method
-    {
-        this.gardenAreaCost=gardenArea*2;
-    }
-
-    public int getGardenAreaCost()                      //garden area cost, accessor method
-    {
-        return this.gardenAreaCost;
-    }
-
-    public void setBookingID(String bookingID)          //allows change of booking ID, mutator
-    {
-        this.bookingID=bookingID;
-    }
-
-    public String getBookingID()                        //retrieves booking ID, accessor
-    {
-        return this.bookingID;
-    }
-
-    public void setBookingDate(String bookingDate)      //allows booking date change, mutator
-    {
-        this.bookingDate=bookingDate;
-    }
-
-    public String getBookingDate()                      //retrieves booking date, accessor
-    {
-        return this.bookingDate;
-    }
-
-    public void setPropertyOwnerName(String propertyOwnerName)      //allows property owner name change, mutator
-    {
-        this.propertyOwnerName=propertyOwnerName;
-    }
-
-    public String getPropertyOwnerName()                            //retrieves property owner name, accessor
-    {
-        return this.propertyOwnerName;
-    }
-
-    public void setContactNumber(String contactNumber)              //allows contact number change, mutator
-    {
-        this.contactNumber=contactNumber;
-    }
-
-    public String getContactNumber()                                //retrieves contact number, accessor
-    {
-        return this.contactNumber;
-    }
-
-    public void setAddress(String address)                          //allows address change, mutator
-    {
-        this.address=address;
-    }
-
-    public String getAddress()                                      //retrieves address, accessor
-    {
-        return this.address;
-    }
-
-    public void setRooms(int rooms)                                 //allows number of rooms change, mutator
-    {
-        this.rooms=rooms;
-    }
-
-    public int getRooms()                                           //retrieves number of rooms, accessor
-    {
-        return this.rooms;
-    }
-
-    public void setGardenArea(int gardenArea)                       //allows garden area change, mutator
-    {
-        this.gardenArea=gardenArea;
-    }
-
-    public int getGardenArea()                                      //retrieves garden area, accessor
-    {
+    /**
+     * @return int
+     */
+    public int getGardenArea() {
         return this.gardenArea;
     }
 
-    @Override                                                       //converts data to string for output
-    public String toString()
-    {
-        return getClass().getName()+"\n"+bookingID+" "+bookingDate+" "+numWeeks+" "+propertyOwnerName+" "+contactNumber+" "+address+" "+rooms+" "+gardenArea+" "+roomsCost+" "+gardenAreaCost;
+    /**
+     * @param gardenArea
+     * @return void
+     */
+    public void setGardenAreaCost(int gardenArea) {
+        this.gardenAreaCost = gardenArea * 2;
+    }
+
+    /**
+     * @return int
+     */
+    public int getGardenAreaCost() {
+        return this.gardenAreaCost;
+    }
+
+    /**
+     * @param rooms
+     * @return void
+     */
+    public void setRooms(int rooms) {
+        this.rooms = rooms;
+        setRoomsCost(rooms);
+    }
+
+    /**
+     * @return int
+     */
+    public int getRooms() {
+        return this.rooms;
+    }
+
+    /**
+     * @param rooms
+     * @return void
+     */
+    public void setRoomsCost(int rooms) {
+        this.roomsCost = rooms * 5;
+    }
+
+    /**
+     * @return int
+     */
+    public int getRoomsCost() {
+        return this.roomsCost;
+    }
+
+    /**
+     * @param address
+     * @return void
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    /**
+     * @return String
+     */
+    public String getAddress() {
+        return this.address;
+    }
+
+    /**
+     * @param bookingDate
+     * @return void
+     */
+    public void setBookingDate(String bookingDate) {
+        this.bookingDate = bookingDate;
+    }
+
+    /**
+     * @return String
+     */
+    public String getBookingDate() {
+        return this.bookingDate;
+    }
+
+    /**
+     * @param bookingID
+     * @return void
+     */
+    public void setBookingID(String bookingID) {
+        this.bookingID = bookingID;
+    }
+
+    /**
+     * @return String
+     */
+    public String getBookingID() {
+        return this.bookingID;
+    }
+
+    /**
+     * @param contactNumber
+     * @return void
+     */
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    /**
+     * @return String
+     */
+    public String getContactNumber() {
+        return this.contactNumber;
+    }
+
+    /**
+     * @param propertyOwnerName
+     * @return void
+     */
+    public void setPropertyOwnerName(String propertyOwnerName) {
+        this.propertyOwnerName = propertyOwnerName;
+    }
+
+    /**
+     * @return String
+     */
+    public String getPropertyOwnerName() {
+        return this.propertyOwnerName;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "%s %s %s %d %s %s %s %d %d %d %d",
+                getClass().getName(),
+                bookingID,
+                bookingDate,
+                numWeeks,
+                propertyOwnerName,
+                contactNumber,
+                address,
+                rooms,
+                gardenArea,
+                roomsCost,
+                gardenAreaCost);
     }
 }
 
-class Luxury extends Booking            //subclass of booking
-{
+class Luxury extends Booking {
     private boolean securityAlarmCheck;
     private boolean poolMaintenance;
-    private int luxuryCost=0;
+    private int luxuryCost = 0;
 
-    public Luxury(String bookingID, String bookingDate,int numWeeks, String propertyOwnerName, String contactNumber, String address, int rooms, int gardenArea, boolean securityAlarmCheck, boolean poolMaintenance)
-    {       //constructor also takes true/false for program checkboxes
-        super(bookingID,bookingDate,numWeeks,propertyOwnerName,contactNumber,address,rooms,gardenArea);
-        this.securityAlarmCheck=securityAlarmCheck;
-        this.poolMaintenance=poolMaintenance;
+    /**
+     * Luxury class constructor
+     * 
+     * @param gardenArea
+     * @param numWeeks
+     * @param rooms
+     * @param address
+     * @param bookingDate
+     * @param bookingID
+     * @param contactNumber
+     * @param propertyOwnerName
+     * @param poolMaintenance
+     * @param securityAlarmCheck
+     */
+    public Luxury(
+            int gardenArea,
+            int numWeeks,
+            int rooms,
+            String address,
+            String bookingDate,
+            String bookingID,
+            String contactNumber,
+            String propertyOwnerName,
+            boolean poolMaintenance,
+            boolean securityAlarmCheck) {
+        super(gardenArea, numWeeks, rooms, address, bookingDate, bookingID, contactNumber, propertyOwnerName);
+        this.poolMaintenance = poolMaintenance;
+        this.securityAlarmCheck = securityAlarmCheck;
     }
 
-    public void setSecurityAlarmCheck(boolean securityAlarmCheck)       //if security alarm checkbox is checked, adds $50 to luxuryCost variable
-    {
-        if(this.securityAlarmCheck=true)
-        {
-            luxuryCost=luxuryCost+50;
+    /**
+     * @param poolMaintenance
+     * @return void
+     */
+    public void setPoolMaintenance(boolean poolMaintenance) {
+        if (this.poolMaintenance = true) {
+            luxuryCost = luxuryCost + 50;
         }
     }
 
-    public boolean getSecurityAlarmCheck()                              //retrieves securityAlarmCheck (true/false)
-    {
-        return this.securityAlarmCheck;
-    }
-
-    public void setPoolMaintenance(boolean poolMaintenance)             //if pool maintenance checkbox is checked, adds $50 to luxuryCost variable
-    {
-        if(this.poolMaintenance=true)
-        {
-            luxuryCost=luxuryCost+50;
-        }
-    }
-
-    public boolean getPoolMaintenance()                                 //retrieves poolMaintenance (true/false)
-    {
+    /**
+     * @return boolean
+     */
+    public boolean getPoolMaintenance() {
         return this.poolMaintenance;
     }
 
-    @Override                   //converts data to string for output
-    public String toString()
-    {
-        return getClass().getName()+"\n"+securityAlarmCheck+" "+poolMaintenance;
+    /**
+     * @param securityAlarmCheck
+     * @return void
+     */
+    public void setSecurityAlarmCheck(boolean securityAlarmCheck) {
+        if (this.securityAlarmCheck = true) {
+            luxuryCost = luxuryCost + 50;
+        }
+    }
+
+    /**
+     * @return boolean
+     */
+    public boolean getSecurityAlarmCheck() {
+        return this.securityAlarmCheck;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "%s %b %b",
+                getClass().getName(),
+                poolMaintenance,
+                securityAlarmCheck);
     }
 }

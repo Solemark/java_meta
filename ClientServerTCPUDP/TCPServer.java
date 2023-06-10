@@ -35,7 +35,7 @@ class Connection extends Thread {
 	ObjectOutputStream oos;
 	Socket clientSocket;
 	Timer tm;
-	String data;
+	String data = "";
 	int interval = 2000;
 	ArrayList<Member> mA = new ArrayList<Member>();
 
@@ -71,6 +71,7 @@ class Connection extends Thread {
 							}
 							oos.writeObject(null);
 							oos.close();
+							fout.close();
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
@@ -91,7 +92,7 @@ class Connection extends Thread {
 				}
 				out.writeUTF("Saved data of server!"); // Sends server response to client
 			} catch (EOFException e) {
-				System.out.println("EOF:" + e.getMessage());
+				System.out.println("End of File:" + e.getMessage());
 			} catch (IOException e) {
 				System.out.println("readline:" + e.getMessage());
 			} catch (ClassNotFoundException e) {

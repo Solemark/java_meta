@@ -8,44 +8,41 @@ import java.util.ArrayList;
 
 public class UDPServer {
 	public static void main(String args[]) {
-		DatagramSocket aSocket = null;
+		DatagramSocket socket = null;
 		try {
-
-			int serverPort = 2289;
-			aSocket = new DatagramSocket(serverPort);
+			final int port = 2289;
+			socket = new DatagramSocket(port);
 			byte[] buffer = new byte[1000];
 			DatagramPacket request = new DatagramPacket(buffer, buffer.length);
-			ArrayList<Member> mA = new ArrayList<Member>();
+			ArrayList<Member> memberArrayList = new ArrayList<Member>();
 
 			while (true) {
-				mA.clear();
+				memberArrayList.clear();
 				// Server receives client request and starts the server process.
-				aSocket.receive(request);
+				socket.receive(request);
 				String file = new String(request.getData(), 0, request.getLength());
 				System.out.println(file);
 
 				// Section retrieves data from memberlistObject
-				Member m = null;
-				Object obj = new Object();
+				Member member = null;
+				Object object = new Object();
 				try {
-					FileInputStream fIn = new FileInputStream(file);
-					ObjectInputStream in = new ObjectInputStream(fIn);
+					ObjectInputStream input = new ObjectInputStream(new FileInputStream(file));
 					int i = 0;
 
 					while (true) {
-						if (obj != null) {
-							obj = in.readObject();
-							m = (Member) obj;
-							mA.add(m);
+						if (object != null) {
+							object = input.readObject();
+							member = (Member) object;
+							memberArrayList.add(member);
 						} else {
 							break;
 						}
 						i++;
 					}
-					in.close();
-					fIn.close();
-					i = mA.size() - 1;
-					mA.remove(i);
+					input.close();
+					i = memberArrayList.size() - 1;
+					memberArrayList.remove(i);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -53,18 +50,18 @@ public class UDPServer {
 				// Sends data stored in the Member ArrayList to the UDPClient
 				byte[] send;
 				DatagramPacket reply;
-				for (int i = 0; i < mA.size(); i++) {
+				for (int i = 0; i < memberArrayList.size(); i++) {
 					send = new byte[1000];
-					String out = mA.get(i).getFirstName() + "~SPLIT~" // "~SPLIT~" will allow for the string received by
-																		// the
-																		// client to be broken into variables.
-							+ mA.get(i).getLastName() + "~SPLIT~"
-							+ mA.get(i).getAddress() + "~SPLIT~"
-							+ mA.get(i).getNumber();
+					String out = String.format(
+							"%s~SPLIT~%s~SPLIT~%s~SPLIT~%s",
+							memberArrayList.get(i).getFirstName(),
+							memberArrayList.get(i).getLastName(),
+							memberArrayList.get(i).getAddress(),
+							memberArrayList.get(i).getNumber());
 					System.out.println(out);
 					send = out.getBytes();
 					reply = new DatagramPacket(send, send.length, request.getAddress(), request.getPort());
-					aSocket.send(reply);
+					socket.send(reply);
 				}
 			}
 		} catch (SocketException e) {
@@ -72,8 +69,8 @@ public class UDPServer {
 		} catch (IOException e) {
 			System.out.println("IO: " + e.getMessage());
 		} finally {
-			if (aSocket != null)
-				aSocket.close();
+			if (socket != null)
+				socket.close();
 		}
 	}
 }

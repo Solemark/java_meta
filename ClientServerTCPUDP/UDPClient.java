@@ -58,7 +58,8 @@ public class UDPClient {
 	public static void header() {
 		System.out.println(
 				String.format("%-15s%-15s%-20s%-20s", "|First Name", "|Last Name", "|Address", "|Phone Number"));
-		for (int i = 0; i < 65; i++) { // A small loop instead of writing out 65 = signs
+		// linebreak between header and data
+		for (int i = 0; i < 65; i++) {
 			System.out.print("=");
 		}
 		System.out.println(); // A linebreak after the .print() functions

@@ -1,14 +1,14 @@
 public class Booking {
-    private int gardenArea = 0;
-    private int gardenAreaCost = 0;
-    private int numWeeks = 0;
-    private int rooms = 0;
-    private int roomsCost = 0;
-    private String address = "";
-    private String bookingDate = "";
-    private String bookingID = "";
-    private String contactNumber = "";
-    private String propertyOwnerName = "";
+    protected int gardenArea = 0;
+    protected int gardenAreaCost = 0;
+    protected int numWeeks = 0;
+    protected int rooms = 0;
+    protected int roomsCost = 0;
+    protected String address = "";
+    protected String bookingDate = "";
+    protected String bookingID = "";
+    protected String contactNumber = "";
+    protected String propertyOwnerName = "";
 
     /**
      * Booking class constructor
@@ -271,8 +271,18 @@ class Luxury extends Booking {
     @Override
     public String toString() {
         return String.format(
-                "%s %b %b",
+                "%s %s %s %d %s %s %s %d %d %d %d %b %b",
                 getClass().getName(),
+                bookingID,
+                bookingDate,
+                numWeeks,
+                propertyOwnerName,
+                contactNumber,
+                address,
+                rooms,
+                gardenArea,
+                roomsCost,
+                gardenAreaCost,
                 poolMaintenance,
                 securityAlarmCheck);
     }

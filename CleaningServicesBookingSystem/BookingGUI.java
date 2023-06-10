@@ -112,13 +112,19 @@ public class BookingGUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
-
-        if (command.compareTo("Clear") == 0)
-            clear();
-        else if (command.compareTo("SaveData") == 0)
-            saveData();
-        else if (command.compareTo("Exit") == 0)
-            exit();
+        switch (command) {
+            case "Clear":
+                clear();
+                break;
+            case "Save":
+                save();
+                break;
+            case "Exit":
+                exit();
+                break;
+            default:
+                break;
+        }
     }
 
     /**
@@ -132,9 +138,12 @@ public class BookingGUI extends JFrame implements ActionListener {
         addressField.setText("");
         contactNumberField.setText("");
         bookingDateField.setText("");
+        numWeeksField.setText("");
         bookingIDField.setText("");
         nameField.setText("");
         priceField.setText("$" + 0);
+        securityCheckBox.setSelected(false);
+        poolMaintenanceBox.setSelected(false);
 
         securityAlarmCheck = false;
         poolMaintenance = false;
@@ -145,7 +154,7 @@ public class BookingGUI extends JFrame implements ActionListener {
      * 
      * @return void
      */
-    public void saveData() {
+    public void save() {
         // error code for blank booking ID field
         if (bookingIDField.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(null, "No booking ID", "NQ-RE Services Calculator",
@@ -230,6 +239,10 @@ public class BookingGUI extends JFrame implements ActionListener {
             bookingList.add(createNewLuxury());
         }
         calculation();
+        for (Booking booking : bookingList) {
+            System.out.println(booking);
+        }
+        clear();
     }
 
     /**

@@ -54,7 +54,11 @@ public class UDPClient {
 		}
 	}
 
-	// A method which sets out the first two lines of the client display
+	/**
+	 * creates a display header
+	 * 
+	 * @return void
+	 */
 	public static void header() {
 		System.out.println(
 				String.format("%-15s%-15s%-20s%-20s", "|First Name", "|Last Name", "|Address", "|Phone Number"));

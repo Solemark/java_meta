@@ -39,6 +39,11 @@ class Connection extends Thread {
 	int interval = 2000;
 	ArrayList<Member> mA = new ArrayList<Member>();
 
+	/**
+	 * Connection class constructor
+	 * 
+	 * @param aClientSocket
+	 */
 	public Connection(Socket aClientSocket) {
 		try {
 			clientSocket = aClientSocket;
@@ -50,14 +55,21 @@ class Connection extends Thread {
 		}
 	}
 
+	/**
+	 * runs the server
+	 * 
+	 * @return void
+	 */
 	public void run() {
-		File file = new File("memberlist.txt"); // Creates memberlist.txt
+		// Creates memberlist.txt
+		File file = new File("memberlist.txt");
 		while (true) {
 			try {
 				Member m = (Member) in.readObject();
 				tm = new Timer();
 
-				tm.schedule(new TimerTask() { // TimerTask() writes to memberlistObject
+				// TimerTask() writes to memberlistObject
+				tm.schedule(new TimerTask() {
 					@Override
 					public void run() {
 						try {
@@ -75,7 +87,8 @@ class Connection extends Thread {
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
-						tm.cancel(); // Closes the timer when completed
+						// Closes the timer when completed
+						tm.cancel();
 					}
 				}, interval, interval);
 
@@ -90,7 +103,8 @@ class Connection extends Thread {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				out.writeUTF("Saved data of server!"); // Sends server response to client
+				// Sends server response to client
+				out.writeUTF("Saved data of server!");
 			} catch (EOFException e) {
 				System.out.println("End of File:" + e.getMessage());
 			} catch (IOException e) {

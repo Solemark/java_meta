@@ -69,6 +69,15 @@ public class TCPClient {
         }
     }
 
+    /**
+     * ensure all user inputs are valid
+     * 
+     * @param firstName
+     * @param lastName
+     * @param address
+     * @param number
+     * @return boolean
+     */
     public static boolean errorCheck(String firstName, String lastName, String address, String number) {
         boolean flag = true;
         if (firstName.equalsIgnoreCase("")) {

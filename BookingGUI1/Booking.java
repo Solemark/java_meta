@@ -1,7 +1,7 @@
 public class Booking {
     protected int gardenArea = 0;
     protected int gardenAreaCost = 0;
-    protected int numWeeks = 0;
+    protected int numberOfWeeks = 0;
     protected int rooms = 0;
     protected int roomsCost = 0;
     protected String address = "";
@@ -14,7 +14,7 @@ public class Booking {
      * Booking class constructor
      * 
      * @param gardenArea
-     * @param numWeeks
+     * @param numberOfWeeks
      * @param rooms
      * @param address
      * @param bookingDate
@@ -24,7 +24,7 @@ public class Booking {
      */
     public Booking(
             int gardenArea,
-            int numWeeks,
+            int numberOfWeeks,
             int rooms,
             String address,
             String bookingDate,
@@ -32,7 +32,7 @@ public class Booking {
             String contactNumber,
             String propertyOwnerName) {
         this.gardenArea = gardenArea;
-        this.numWeeks = numWeeks;
+        this.numberOfWeeks = numberOfWeeks;
         this.rooms = rooms;
         this.address = address;
         this.bookingDate = bookingDate;
@@ -188,7 +188,7 @@ public class Booking {
                 getClass().getName(),
                 bookingID,
                 bookingDate,
-                numWeeks,
+                numberOfWeeks,
                 propertyOwnerName,
                 contactNumber,
                 address,
@@ -208,7 +208,7 @@ class Luxury extends Booking {
      * Luxury class constructor
      * 
      * @param gardenArea
-     * @param numWeeks
+     * @param numberOfWeeks
      * @param rooms
      * @param address
      * @param bookingDate
@@ -220,7 +220,7 @@ class Luxury extends Booking {
      */
     public Luxury(
             int gardenArea,
-            int numWeeks,
+            int numberOfWeeks,
             int rooms,
             String address,
             String bookingDate,
@@ -229,7 +229,7 @@ class Luxury extends Booking {
             String propertyOwnerName,
             boolean poolMaintenance,
             boolean securityAlarmCheck) {
-        super(gardenArea, numWeeks, rooms, address, bookingDate, bookingID, contactNumber, propertyOwnerName);
+        super(gardenArea, numberOfWeeks, rooms, address, bookingDate, bookingID, contactNumber, propertyOwnerName);
         this.poolMaintenance = poolMaintenance;
         this.securityAlarmCheck = securityAlarmCheck;
     }
@@ -275,7 +275,7 @@ class Luxury extends Booking {
                 getClass().getName(),
                 bookingID,
                 bookingDate,
-                numWeeks,
+                numberOfWeeks,
                 propertyOwnerName,
                 contactNumber,
                 address,

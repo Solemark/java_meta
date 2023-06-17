@@ -43,7 +43,7 @@ public class BookingGUI extends JFrame implements ActionListener {
     JLabel bookingDateLabel = new JLabel("Booking Date");
     JLabel numWeeksLabel = new JLabel("# of weeks of service");
     JLabel roomsLabel = new JLabel("# of rooms");
-    JLabel gardenAreaLabel = new JLabel("Area of Garden m�");
+    JLabel gardenAreaLabel = new JLabel("Area of Garden m2");
     JLabel priceLabel = new JLabel("The final cost is: ");
 
     // fields for labels

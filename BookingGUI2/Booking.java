@@ -1,41 +1,47 @@
 public class Booking {
-    private String bookingID;
-    private String bookingDate;
-    private int numberOfWeeks;
-    private String propertyOwnerName;
-    private String contactNumber;
-    private String address;
-    private int rooms;
-    private int roomsCost = 0;
-    private int gardenArea;
-    private int gardenAreaCost = 0;
+    protected int gardenArea = 0;
+    protected int gardenAreaCost = 0;
+    protected int numberOfWeeks = 0;
+    protected int rooms = 0;
+    protected int roomsCost = 0;
+    protected String address = "";
+    protected String bookingDate = "";
+    protected String bookingID = "";
+    protected String contactNumber = "";
+    protected String propertyOwnerName = "";
 
     /**
-     * Booking constructor
+     * Booking class constructor
      * 
-     * @param bookingID
-     * @param bookingDate
-     * @param numberOfWeeks
-     * @param propertyOwnerName
-     * @param contactNumber
-     * @param address
-     * @param rooms
      * @param gardenArea
+     * @param numWeeks
+     * @param rooms
+     * @param address
+     * @param bookingDate
+     * @param bookingID
+     * @param contactNumber
+     * @param propertyOwnerName
      */
-    public Booking(String bookingID, String bookingDate, int numberOfWeeks, String propertyOwnerName,
+    public Booking(
+            int gardenArea,
+            int numWeeks,
+            int rooms,
+            String address,
+            String bookingDate,
+            String bookingID,
             String contactNumber,
-            String address, int rooms, int gardenArea) {
-        this.bookingID = bookingID;
-        this.bookingDate = bookingDate;
-        this.numberOfWeeks = numberOfWeeks;
-        this.propertyOwnerName = propertyOwnerName;
-        this.contactNumber = contactNumber;
-        this.address = address;
-        this.rooms = rooms;
+            String propertyOwnerName) {
         this.gardenArea = gardenArea;
+        this.numberOfWeeks = numWeeks;
+        this.rooms = rooms;
+        this.address = address;
+        this.bookingDate = bookingDate;
+        this.bookingID = bookingID;
+        this.contactNumber = contactNumber;
+        this.propertyOwnerName = propertyOwnerName;
 
-        setRoomsCost(rooms);
         setGardenAreaCost(gardenArea);
+        setRoomsCost(rooms);
     }
 
     /**
@@ -250,24 +256,33 @@ class Luxury extends Booking {
     private int luxuryCost = 0;
 
     /**
-     * Luxury constructor
+     * Luxury class constructor
      * 
-     * @param bookingID
-     * @param bookingDate
-     * @param numWeeks
-     * @param propertyOwnerName
-     * @param contactNumber
-     * @param address
-     * @param rooms
      * @param gardenArea
-     * @param securityAlarmCheck
+     * @param numberOfWeeks
+     * @param rooms
+     * @param address
+     * @param bookingDate
+     * @param bookingID
+     * @param contactNumber
+     * @param propertyOwnerName
      * @param poolMaintenance
+     * @param securityAlarmCheck
      */
-    public Luxury(String bookingID, String bookingDate, int numWeeks, String propertyOwnerName, String contactNumber,
-            String address, int rooms, int gardenArea, boolean securityAlarmCheck, boolean poolMaintenance) {
-        super(bookingID, bookingDate, numWeeks, propertyOwnerName, contactNumber, address, rooms, gardenArea);
-        this.securityAlarmCheck = securityAlarmCheck;
+    public Luxury(
+            int gardenArea,
+            int numberOfWeeks,
+            int rooms,
+            String address,
+            String bookingDate,
+            String bookingID,
+            String contactNumber,
+            String propertyOwnerName,
+            boolean poolMaintenance,
+            boolean securityAlarmCheck) {
+        super(gardenArea, numberOfWeeks, rooms, address, bookingDate, bookingID, contactNumber, propertyOwnerName);
         this.poolMaintenance = poolMaintenance;
+        this.securityAlarmCheck = securityAlarmCheck;
     }
 
     /**

@@ -17,53 +17,54 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class BookingGUI extends JFrame implements ActionListener {
+    ArrayList<Luxury> bookingList = new ArrayList<Luxury>();
     boolean poolMaintenance = false;
     boolean securityAlarmCheck = false;
-    int cBooking = 0;
-    int bookingC = 0;
     int gardenArea = 0;
-    int i = 0;
-    int numberOfWeeks = 0;
-    int rooms = 0;
+    int numWeeks = 0;
     int totalCost = 0;
+    int rooms = 0;
     final int luxuryCost = 50;
-    final int MAX_BOOKING = 9;
     String address = "";
-    String bAS = "";
     String bookingDate = "";
     String bookingID = "";
     String contactNumber = "";
-    String entry = "";
     String propertyOwnerName = "";
-    String searchID = "";
 
-    Luxury[] bookingArray = new Luxury[MAX_BOOKING];
-    Booking[] searchArray = new Booking[MAX_BOOKING];
-    ArrayList<String> bookingList = new ArrayList<>();
+    int bookingC = 0;
+    int cBooking = 0;
+    int i = 0;
+    int numberOfWeeks = 0;
+    final int MAX_BOOKING = 9;
+    String searchID = "";
 
     JTextArea displayArea = new JTextArea("", 15, 65);
 
-    JCheckBox securityCheckBox = new JCheckBox("Security system check $" + luxuryCost, false); // checkboxes
+    // checkboxes
+    JCheckBox securityCheckBox = new JCheckBox("Security system check $" + luxuryCost, false);
     JCheckBox poolMaintenanceBox = new JCheckBox("Pool cleaning/maintenance $" + luxuryCost, false);
 
-    JButton clearButton = new JButton("Clear"); // buttons
+    // buttons
+    JButton clearButton = new JButton("Clear");
     JButton bookingButton = new JButton("Booking");
     JButton exitButton = new JButton("Exit");
     JButton searchButton = new JButton("Search");
     JButton editButton = new JButton("Edit");
     JButton editCButton = new JButton("Edit(c)");
 
-    JLabel bookingIDLabel = new JLabel("Booking ID"); // labels/text
+    // labels/text
+    JLabel bookingIDLabel = new JLabel("Booking ID");
     JLabel nameLabel = new JLabel("Property Owner Name");
     JLabel contactNumberLabel = new JLabel("Contact Number");
     JLabel addressLabel = new JLabel("Address");
     JLabel bookingDateLabel = new JLabel("Booking Date");
     JLabel numWeeksLabel = new JLabel("# of weeks of service");
     JLabel roomsLabel = new JLabel("# of rooms");
-    JLabel gardenAreaLabel = new JLabel("Area of Garden m�");
+    JLabel gardenAreaLabel = new JLabel("Area of Garden m2");
     JLabel priceLabel = new JLabel("The final cost is: ");
 
-    JTextField bookingIDField = new JTextField(5); // fields for labels
+    // fields for labels
+    JTextField bookingIDField = new JTextField(5);
     JTextField nameField = new JTextField(20);
     JTextField contactNumberField = new JTextField(11);
     JTextField addressField = new JTextField(15);
@@ -143,34 +144,38 @@ public class BookingGUI extends JFrame implements ActionListener {
         }
     }
 
+    /**
+     * read in data from booking.txt
+     * 
+     * @return void
+     */
     public void readAndDisplayData() {
         try {
-            Scanner in = new Scanner(new FileReader("Booking.txt"));
+            Scanner input = new Scanner(new FileReader("Booking.txt"));
 
-            if (!in.hasNext()) {
+            if (!input.hasNext()) {
                 System.out.println("No existing records");
             }
 
-            while (in.hasNext() && in.hasNextLine()) {
-                entry = in.nextLine();
-                System.out.println(entry);
-                StringTokenizer st = new StringTokenizer(entry, ",");
+            while (input.hasNext() && input.hasNextLine()) {
+                String entry = input.nextLine();
+                StringTokenizer inputToken = new StringTokenizer(entry, ",");
 
-                while (st.hasMoreTokens()) {
+                while (inputToken.hasMoreTokens()) {
                     try {
-                        bookingID = st.nextToken();
-                        bookingDate = st.nextToken();
-                        numberOfWeeks = Integer.parseInt(st.nextToken());
-                        propertyOwnerName = st.nextToken();
-                        contactNumber = st.nextToken();
-                        address = st.nextToken();
-                        rooms = Integer.parseInt(st.nextToken());
-                        gardenArea = Integer.parseInt(st.nextToken());
-                        securityAlarmCheck = Boolean.parseBoolean(st.nextToken());
-                        poolMaintenance = Boolean.parseBoolean(st.nextToken());
+                        bookingID = inputToken.nextToken();
+                        bookingDate = inputToken.nextToken();
+                        numberOfWeeks = Integer.parseInt(inputToken.nextToken());
+                        propertyOwnerName = inputToken.nextToken();
+                        contactNumber = inputToken.nextToken();
+                        address = inputToken.nextToken();
+                        rooms = Integer.parseInt(inputToken.nextToken());
+                        gardenArea = Integer.parseInt(inputToken.nextToken());
+                        securityAlarmCheck = Boolean.parseBoolean(inputToken.nextToken());
+                        poolMaintenance = Boolean.parseBoolean(inputToken.nextToken());
                         saveBooking();
-                    } catch (Exception e) {
-                        System.out.println(e);
+                    } catch (Exception error) {
+                        System.out.println(error);
                     }
                 }
             }
@@ -353,26 +358,8 @@ public class BookingGUI extends JFrame implements ActionListener {
      */
     public void saveBooking() {
         i = cBooking;
-        searchArray[i] = new Booking(bookingID, bookingDate, numberOfWeeks, propertyOwnerName, contactNumber, address,
-                rooms,
-                gardenArea);
-        bookingArray[i] = new Luxury(bookingID, bookingDate, numberOfWeeks, propertyOwnerName, contactNumber, address,
-                rooms,
-                gardenArea, securityAlarmCheck, poolMaintenance);
-
-        bAS = String.format(
-                "%s, %s, %d, %s, %s, %s, %d, %d, %b, %b",
-                bookingID,
-                bookingDate,
-                numberOfWeeks,
-                propertyOwnerName,
-                contactNumber,
-                address,
-                rooms,
-                gardenArea,
-                securityAlarmCheck,
-                poolMaintenance);
-        bookingList.add(i, bAS);
+        bookingList.add(i, new Luxury(gardenArea, numberOfWeeks, rooms, address, bookingDate, bookingID, contactNumber,
+                propertyOwnerName, poolMaintenance, securityAlarmCheck));
 
         cBooking++;
         bookingC = (cBooking + 1);
@@ -392,16 +379,16 @@ public class BookingGUI extends JFrame implements ActionListener {
             if (i == cBooking) {
                 break;
             }
-            if (searchArray[i].getBookingID().equalsIgnoreCase(searchID)) {
+            if (bookingList.get(i).getBookingID().equalsIgnoreCase(searchID)) {
                 displayArea.setText("");
                 heading();
-                displayArea.append(bookingList.get(i));
+                displayArea.append(bookingList.get(i).toString());
                 return;
             }
-            if (searchArray[i].getPropertyOwnerName().equalsIgnoreCase(searchID)) {
+            if (bookingList.get(i).getPropertyOwnerName().equalsIgnoreCase(searchID)) {
                 displayArea.setText("");
                 heading();
-                displayArea.append(bookingList.get(i));
+                displayArea.append(bookingList.get(i).toString());
                 return;
             }
         }
@@ -421,16 +408,16 @@ public class BookingGUI extends JFrame implements ActionListener {
     public void edit() {
         i = 0;
         search();
-        roomsField.setText("" + searchArray[i].getRooms());
-        gardenAreaField.setText("" + searchArray[i].getGardenArea());
-        addressField.setText("" + searchArray[i].getAddress());
-        contactNumberField.setText("" + searchArray[i].getContactNumber());
-        bookingDateField.setText("" + searchArray[i].getBookingDate());
-        bookingIDField.setText(searchArray[i].getBookingID());
-        nameField.setText("" + searchArray[i].getPropertyOwnerName());
-        numberOfWeeksField.setText("" + searchArray[i].getNumberOfWeeks());
-        securityAlarmCheck = bookingArray[i].getSecurityAlarmCheck();
-        poolMaintenance = bookingArray[i].getPoolMaintenance();
+        roomsField.setText("" + bookingList.get(i).getRooms());
+        gardenAreaField.setText("" + bookingList.get(i).getGardenArea());
+        addressField.setText("" + bookingList.get(i).getAddress());
+        contactNumberField.setText("" + bookingList.get(i).getContactNumber());
+        bookingDateField.setText("" + bookingList.get(i).getBookingDate());
+        bookingIDField.setText(bookingList.get(i).getBookingID());
+        nameField.setText("" + bookingList.get(i).getPropertyOwnerName());
+        numberOfWeeksField.setText("" + bookingList.get(i).getNumberOfWeeks());
+        securityAlarmCheck = bookingList.get(i).getSecurityAlarmCheck();
+        poolMaintenance = bookingList.get(i).getPoolMaintenance();
 
         JOptionPane.showMessageDialog(
                 null,
@@ -464,39 +451,17 @@ public class BookingGUI extends JFrame implements ActionListener {
             poolMaintenance = true;
         }
 
-        bAS = String.format(
-                "%s, %s, %d, %s, %s, %s, %d, %d, %b, %b",
-                bookingID,
-                bookingDate,
-                numberOfWeeks,
-                propertyOwnerName,
-                contactNumber,
-                address,
-                rooms,
+        bookingList.set(i, new Luxury(
                 gardenArea,
-                securityAlarmCheck,
-                poolMaintenance);
-        bookingList.set(i, bAS);
-
-        searchArray[i].setBookingID(bookingID);
-        searchArray[i].setBookingDate(bookingDate);
-        searchArray[i].setNumberOfWeeks(numberOfWeeks);
-        searchArray[i].setPropertyOwnerName(propertyOwnerName);
-        searchArray[i].setContactNumber(contactNumber);
-        searchArray[i].setAddress(address);
-        searchArray[i].setRooms(rooms);
-        searchArray[i].setGardenArea(gardenArea);
-
-        bookingArray[i].setBookingID(bookingID);
-        bookingArray[i].setBookingDate(bookingDate);
-        bookingArray[i].setNumberOfWeeks(numberOfWeeks);
-        bookingArray[i].setPropertyOwnerName(propertyOwnerName);
-        bookingArray[i].setContactNumber(contactNumber);
-        bookingArray[i].setAddress(address);
-        bookingArray[i].setRooms(rooms);
-        bookingArray[i].setGardenArea(gardenArea);
-        bookingArray[i].setSecurityAlarmCheck(securityAlarmCheck);
-        bookingArray[i].setPoolMaintenance(poolMaintenance);
+                numberOfWeeks,
+                rooms,
+                address,
+                bookingDate,
+                bookingID,
+                contactNumber,
+                propertyOwnerName,
+                poolMaintenance,
+                securityAlarmCheck));
 
         displayAll();
     }
@@ -534,8 +499,8 @@ public class BookingGUI extends JFrame implements ActionListener {
         try {
             Formatter out = new Formatter("Booking.txt");
 
-            for (String c : bookingList) {
-                out.format("%s\n", c.toString());
+            for (Luxury booking : bookingList) {
+                out.format("%s\n", booking.toString());
             }
             out.close();
             clear();
